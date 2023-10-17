@@ -1,0 +1,49 @@
+DB_23.10.16
+
+GRANT 권한 ON 테이블 TO 사용자
+
+varchar - 입력된 글자수를 계산해서 공간 할당
+char - 계산하지 않고 딱 정해진 만큼 할당
+
+
+
+
+SQL분류
+1번: 저장할 대상/데이터를 정의하게 됨. Data Definition Language(DDL)
+2번: 저장된 데이터를 가지고 여러가지 조작(CRUD)을 하게됨. Data Manipulation Language(DML) (편집됨)
+0번: 계정관리, 백업복구, Data Control  Language(DCL)
+==> 회원정보와 주문정보테이블이 관계가 성립 --> 관계의 특징을 가지고 저장하는 방식(관계형DB, RDB)
+
+create user 'apple'@'localhost' identified by '1234'
+
+grant all privileges
+on *.*
+to 'apple'@'localhost'
+
+
+데이터 추출 방법
+전체 생성(테이블+제약조건+데이터)
+테이블+제약조건 생성
+데이터 백업
+
+
+==> DDL : 테이블 뼈대(스키마)와 관련된 작업(테이블생성+항목수정+테이블삭제)
+==> create table, alter table,  drop table
+==> truncate == delete from
+==> truncate: 스키마만 놔줌. 데이터만 drop(데이터복구X) ==> 데이터넣었던 저장공간까지를 삭제
+==> delete from: 스키마와는 상관없음. 데이터를 delete(데이터복구 O) ==> 저장공간을 지우지는 않고, null을 채우는 방식
+
+
+
+자세히 보기 명령어
+desc 테이블명
+
+기본키 - not null unique
+- 후보키: 항목들 중 유일하고 꼭 값이 있어서 데이터를 구분할 수 있는 항목
+- 후보키 중 하나를 서택하여 중요키로 설정
+- 검색이나 다른 테이블과 조인할 때 사용
+- 기본키가 되기 위한 조건(개체무결성): 값이 유일, 비어있지 않다.
+
+외래키
+- 다른 테이블의 유일한 키를 연결하여 사용하는 항목
+- 값의 범위 자동 체크 -> 외래키에 들어있지 않은 값을 넣는 경우 에러체크 -> 결점이 없는 테이블을 넣음(참조무결성)
